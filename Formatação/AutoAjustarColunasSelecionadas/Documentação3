@@ -1,0 +1,36 @@
+================================================================================
+DOCUMENTAÇÃO: AUTO-AJUSTE DE LARGURA DE COLUNAS (AUTOFIT)
+================================================================================
+
+1. VISÃO GERAL
+Este script substitui a necessidade de dar "duplo clique" com o mouse na 
+divisória de cada coluna para ajustar a sua largura ao conteúdo. Com um atalho, 
+ele aplica o ajuste perfeito em todas as colunas selecionadas instantaneamente.
+
+--------------------------------------------------------------------------------
+2. PRINCIPAIS FUNCIONALIDADES
+- Ajuste Instantâneo: Utiliza o método nativo 'AutoFit' do Excel, garantindo 
+  que a coluna fique com a largura exata da maior string de texto contida nela.
+- Processamento em Lote: Funciona para uma única coluna ou para múltiplas 
+  colunas selecionadas ao mesmo tempo.
+
+--------------------------------------------------------------------------------
+3. COMO UTILIZAR E CONFIGURAR
+Passo a passo recomendado:
+1. Importe este código para o seu arquivo PERSONAL.XLSB (Pasta de Trabalho 
+   Pessoal de Macros).
+2. No Excel, abra a lista de macros (Alt + F8).
+3. Selecione a macro "AutoAjustarColunasSelecionadas" e clique em "Opções...".
+4. Atribua um atalho (Ex: Shift + A, que resultará em Ctrl + Shift + A, para 
+   fazer sentido com "Ajuste" ou "AutoFit").
+
+Uso diário: 
+Selecione as colunas desejadas (pode usar o teclado com Shift + Espaço para 
+pegar a linha inteira, ou simplesmente selecionar um bloco de células) e aperte 
+o atalho.
+
+--------------------------------------------------------------------------------
+4. NOTAS TÉCNICAS
+- O método Selection.Columns.AutoFit é altamente eficiente porque aciona o 
+  motor de renderização do Excel de uma só vez para toda a seleção, ao invés de 
+  fazer um loop individual por coluna.
