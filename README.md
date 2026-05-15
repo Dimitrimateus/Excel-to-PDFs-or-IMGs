@@ -1,42 +1,47 @@
-# Excel-to-PDFs-or-IMGs
-Esta automacao foi projetada para segmentar bases de dados e gerar arquivos individuais (PDF ou PNG) com base em filtros de uma coluna. O script identifica automaticamente os itens da coluna escolhida e exporta um relatorio para cada um.
+# Meus Macros VBA
 
-Customizacao e Configuracoes Rapidas
-O codigo foi estruturado para ser facilmente editavel. No topo do modulo, voce encontrara a secao denominada CONFIGURACOES RAPIDAS. Alterando os valores nesta parte, voce modifica o comportamento de todo o programa sem precisar mexer na logica complexa:
+Esse repositório é onde eu organizo os meus scripts e macros em VBA. A ideia principal aqui é automatizar aquelas tarefas repetitivas do Excel no dia a dia e deixar o fluxo de trabalho mais rápido.
 
-DATA_SHEET: Altere o texto entre aspas para o nome exato da aba onde estao seus dados (Ex: "Dados_Vendas").
+## O que você vai encontrar aqui
 
-ZONE_COLUMN: Altere o numero para indicar qual coluna deve ser filtrada. (Ex: Use 1 para Coluna A, 2 para Coluna B, etc).
+Por enquanto eu tenho três macros principais, que dividi em duas pastas para manter o código organizado:
 
-HEADER_ROWS: Define quais linhas serao repetidas no topo de cada pagina do PDF (Ex: "$1:$2" se o seu cabecalho ocupar duas linhas).
+### Formatação (/Formatacao)
+* **Ajuste de Largura de Coluna:** São duas macros simples, mas que salvam muito tempo. Elas servem para aumentar ou diminuir a largura da coluna selecionada usando apenas o teclado, sem precisar tirar a mão para usar o mouse.
 
-LIMITE_LINHAS: Define o ponto de corte. Se o filtro resultar em menos linhas que este numero, o Excel gera uma Imagem (PNG). Se for maior, gera um PDF.
+### Exportação (/Exportacao)
+* **Excel para PDF ou Imagem:** Um script para agilizar na hora de exportar partes específicas da planilha, ou ela inteira, para PDF ou imagem. É bem prático para gerar relatórios fechados antes de enviar para alguém.
 
-Funcionalidades
-Exportacao Inteligente: Seleciona o formato (Imagem ou PDF) com base no tamanho do relatorio.
+---
 
-Algoritmo de Captura: Evita falhas visuais e celulas pretas ao gerar imagens, garantindo fidelidade ao que e visto no Excel.
+## Como instalar e configurar na sua máquina
 
-Tratamento de Nomes: Remove automaticamente caracteres invalidos do Windows para evitar erros de salvamento.
+O Git não lida muito bem com arquivos do Excel direto, então deixei os códigos exportados em arquivos `.bas`. 
 
-Como Utilizar
-Abra o Editor VBA (ALT + F11) e cole o codigo em um Modulo.
+Para que as macros funcionem bem em qualquer planilha que você abrir (principalmente as de atalho de coluna), o ideal é salvar o código no seu arquivo pessoal oculto do Excel (`PERSONAL.XLSB`). Aqui está o passo a passo de como fazer isso:
 
-Ajuste as Configuracoes Rapidas no topo do codigo conforme a sua necessidade.
+### Passo 1: Importar o código para o Excel
 
-Retorne ao Excel e execute a macro (ALT + F8).
+1. Baixe o arquivo `.bas` que você quer usar aqui do repositório.
+2. Abra o Excel e aperte `Alt + F11` para abrir o editor do VBA.
+3. No painel da esquerda (Project Explorer), procure por `VBAProject (PERSONAL.XLSB)`. 
+   *Nota: Se você não tiver esse arquivo, grave uma macro vazia qualquer e escolha salvar na "Pasta de Trabalho Pessoal de Macros" para forçar o Excel a criar o arquivo para você.*
+4. Clique no projeto do `PERSONAL.XLSB` para selecioná-lo.
+5. Vá no menu **Arquivo > Importar Arquivo** (ou aperte `Ctrl + M`).
+6. Selecione o arquivo `.bas` que você baixou e confirme. Pode fechar o editor do VBA.
 
-Insira um prefixo para os arquivos quando solicitado (Ex: "Vendas_Junho").
+### Passo 2: Configurar os atalhos de teclado
 
-Selecione a pasta onde os arquivos serao armazenados.
+Agora precisamos conectar a macro a um atalho rápido no seu teclado.
 
-Requisitos
-Sistema Operacional Windows.
+1. Na tela normal do Excel, aperte `Alt + F8` para abrir a lista de macros.
+2. No campo "Macros em:", mude para "PERSONAL.XLSB" para conseguir ver as macros que você acabou de importar.
+3. Selecione a macro na lista (por exemplo, a de aumentar coluna) e clique no botão **Opções...**.
+4. Escolha a letra para o atalho. Eu recomendo  (`Ctrl + D`) para aumentar, e (`Ctrl + A`) para diminuir.
+5. Clique em OK e feche a janela.
 
-Microsoft Excel configurado para permitir a execucao de Macros (.xlsm ou .xlsb).
+**Muito importante:** Quando você fechar o Excel pela primeira vez após fazer isso, ele vai perguntar se você deseja salvar as alterações na Pasta de Trabalho Pessoal de Macros. Clique em **Salvar**, caso contrário, os atalhos que você configurou serão perdidos.
 
-Notas Tecnicas
-A ferramenta utiliza um objeto de dicionario para garantir que cada item da coluna de filtro seja processado apenas uma vez, otimizando o tempo de execucao em bases de dados com milhares de linhas. A geracao de imagem e feita atraves de um grafico temporario, o que garante que a resolucao nao dependa do zoom da tela do usuario.
+---
 
-Licenca
-Este projeto esta sob a licenca MIT. Sinta-se livre para utilizar e modificar conforme sua necessidade profissional.
+Feito com VBA e Markdown.
