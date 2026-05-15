@@ -1,0 +1,47 @@
+================================================================================
+DOCUMENTAÇÃO: AJUSTE DINÂMICO DE LARGURA DE COLUNA
+================================================================================
+
+1. VISÃO GERAL
+Este arquivo contém duas macros simples e de alto impacto para produtividade no 
+Excel. Elas permitem aumentar ou diminuir a largura das colunas selecionadas de 
+forma incremental, eliminando a necessidade de usar o mouse para ajustes visuais 
+rápidos.
+
+--------------------------------------------------------------------------------
+2. PRINCIPAIS FUNCIONALIDADES
+- Ajuste em Lote: O código utiliza um loop (For Each) que permite selecionar 
+  várias colunas ao mesmo tempo e redimensioná-las simultaneamente.
+- Tratamento de Limites do Excel:
+  * A macro de aumentar ignora erros caso a coluna atinja a largura máxima 
+    permitida pelo Excel (255 unidades).
+  * A macro de diminuir possui uma trava de segurança que impede que a largura 
+    fique negativa, travando o tamanho mínimo em 0.1 se estiver muito fina.
+- Incremento Padronizado: Aumenta ou diminui a largura em exata 1 unidade 
+  padrão do Excel por execução.
+
+--------------------------------------------------------------------------------
+3. COMO UTILIZAR E CONFIGURAR
+Para que estas macros atinjam seu verdadeiro potencial, elas devem estar 
+disponíveis globalmente e mapeadas em atalhos de teclado.
+
+Passo a passo recomendado:
+1. Importe este código para o seu arquivo PERSONAL.XLSB (Pasta de Trabalho 
+   Pessoal de Macros), para que funcione em qualquer planilha aberta.
+2. No Excel, abra a lista de macros (Alt + F8).
+3. Selecione a macro "AumentarLarguraColuna" e clique em "Opções...".
+4. Atribua um atalho (Ex: Shift + D, que resultará em Ctrl + Shift + D).
+5. Repita o processo para "DiminuirLarguraColuna" (Ex: Shift + E, resultando 
+   em Ctrl + Shift + E).
+
+No dia a dia, basta selecionar a célula ou coluna desejada e usar os atalhos 
+para ajustar a largura instantaneamente.
+
+--------------------------------------------------------------------------------
+4. NOTAS TÉCNICAS
+- Variáveis: O código utiliza apenas a variável 'col' definida como Range para 
+  iterar sobre a seleção.
+- Prevenção de Erros: O comando 'On Error Resume Next' foi implementado 
+  propositalmente para manter o fluxo de trabalho (flow) contínuo, impedindo 
+  que alertas de erro nativos do VBA interrompam o usuário caso os limites da 
+  planilha sejam atingidos.

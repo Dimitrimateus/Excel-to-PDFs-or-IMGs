@@ -1,0 +1,52 @@
+================================================================================
+DOCUMENTAÇÃO: EXCEL PARA PDF OU IMAGEM DINÂMICO
+================================================================================
+
+1. VISÃO GERAL
+Este script VBA automatiza o processo de filtrar uma base de dados no Excel e 
+exportar cada categoria filtrada como um arquivo separado (PDF ou PNG). 
+Ele é dinâmico e permite que o usuário selecione qual coluna deseja usar como 
+filtro no momento da execução.
+
+--------------------------------------------------------------------------------
+2. PRINCIPAIS FUNCIONALIDADES
+- Seleção Dinâmica: Usa um InputBox para que o usuário clique na coluna 
+  desejada para aplicar o filtro (ex: Vendedores, Filiais, Zonas, Status).
+- Decisão Inteligente (PDF vs PNG): Se a categoria filtrada tiver menos que um 
+  número configurável de linhas (padrão: 60), o script gera um arquivo de imagem 
+  (.png). Se tiver mais, gera um documento paginado (.pdf).
+- Tática "Imagem Suprema": Usa uma técnica avançada de exportação de imagem 
+  (Criação de aba temporária + ChartObject + Tentativas de Loop) para evitar o 
+  bug clássico do Windows onde a área de transferência falha e salva imagens pretas 
+  ou incompletas.
+- Universal: Funciona na aba que estiver ativa (ActiveSheet) sem precisar 
+  alterar o código.
+
+--------------------------------------------------------------------------------
+3. COMO UTILIZAR
+1. Na sua planilha com os dados, execute a macro "Exportar_PDFs_Ou_Fotos_Dinamico".
+2. Uma caixa de diálogo aparecerá. Clique em qualquer célula da COLUNA que 
+   você quer usar para separar os arquivos e clique em OK.
+3. Digite um prefixo para os arquivos (ex: "Relatorio_Mensal").
+4. Selecione a pasta no seu computador onde os arquivos devem ser salvos.
+5. Aguarde a mensagem de sucesso. O Excel fará o resto.
+
+--------------------------------------------------------------------------------
+4. CONFIGURAÇÕES RÁPIDAS (Variáveis no topo do código)
+Caso precise adaptar para a sua realidade, altere estas constantes no início do código:
+
+- HEADER_ROWS = "$1:$1" 
+  Define qual linha será o cabeçalho que se repete em todas as páginas do PDF.
+  Se o seu cabeçalho ocupar duas linhas, mude para "$1:$2".
+
+- LIMITE_LINHAS = 60 
+  Define a regra de corte para escolher entre PNG e PDF. Se quiser que TUDO seja 
+  em PDF, mude esse valor para 0.
+
+--------------------------------------------------------------------------------
+5. NOTAS TÉCNICAS
+- Requisitos: Os dados precisam começar na célula A1 e ser contíguos 
+  (usamos CurrentRegion para mapear a tabela).
+- Limpeza de Nomes: O script possui uma função (LimparNome) que converte barras, 
+  asteriscos e outros caracteres inválidos do Windows em hifens (-) para 
+  evitar erros na hora de salvar o arquivo.
